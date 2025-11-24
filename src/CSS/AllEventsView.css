@@ -1,0 +1,296 @@
+/* === КОНТЕЙНЕР СОБЫТИЙ === */
+.events-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.events-container h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+.events-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #28a745);
+    border-radius: 2px;
+}
+
+/* === ПУСТОЙ СПИСОК === */
+.no-events {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    border: 1px dashed #e9ecef;
+    color: #6c757d;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.no-events p {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.no-events p:nth-child(2) {
+    font-size: 0.95rem;
+    color: #868e96;
+}
+
+/* === СПИСОК СОБЫТИЙ === */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* === КАРТОЧКА СОБЫТИЯ === */
+.event-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #007bff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* === ЗАГОЛОВОК КАРТОЧКИ (категория + дата) === */
+.event-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* === ЦВЕТНОЙ ОВАЛ С КАТЕГОРИЕЙ === */
+.event-badge {
+    padding: 0.5rem 1.2rem;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: white !important; /* ГАРАНТИРОВАННО БЕЛЫЙ ТЕКСТ */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === ЗЕЛЁНЫЙ ОВАЛ — ПРОИЗВОДСТВЕННЫЕ === */
+.event-badge.productive {
+    background-color: #28a745 !important;
+}
+
+/* === КРАСНЫЙ ОВАЛ — НЕПРОИЗВОДСТВЕННЫЕ === */
+.event-badge.non-productive {
+    background-color: #dc3545 !important;
+}
+
+/* === ДАТА === */
+.event-date {
+    background: #f8f9fa;
+    padding: 0.4rem 1rem;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 500;
+    border: 1px solid #e9ecef;
+}
+
+/* === ПРИЧИНА (если есть) === */
+.event-reason {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    background: #f0f7ff;
+    border-radius: 12px;
+    border-left: 3px solid #007bff;
+}
+
+.reason-icon {
+    font-size: 1.1rem;
+    margin-right: 0.6rem;
+    color: #007bff;
+}
+
+.reason-text {
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* === ВРЕМЯ ОТСУТСТВИЯ === */
+.event-time {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 1px dashed #e9ecef;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.time-icon {
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.time-label {
+    color: #495057;
+}
+
+/* === НОВЫЙ БЛОК: ВРЕМЯ ВОЗВРАТА === */
+.return-time-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f3f5;
+}
+
+.add-return-time-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-return-time-btn:hover {
+    background: #0056b3;
+}
+
+.return-time-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.return-time-label {
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.return-time-input {
+    padding: 0.6rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 120px;
+    transition: border-color 0.2s;
+}
+
+.return-time-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* === АНИМАЦИЯ === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.event-card,
+.no-events {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 768px) {
+    .events-container {
+        margin: 1.5rem;
+        padding: 2rem;
+    }
+
+    .events-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .event-card {
+        padding: 1.5rem;
+    }
+
+    .event-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .event-date {
+        margin-top: 0.3rem;
+    }
+
+    .event-reason {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .event-time {
+        font-size: 0.85rem;
+    }
+
+    .return-time-input-wrapper {
+        align-items: flex-start;
+    }
+
+    .return-time-input {
+        width: 100%;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-container {
+        padding: 1.5rem;
+    }
+
+    .event-card {
+        padding: 1.3rem;
+    }
+
+    .event-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .event-date {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .reason-icon {
+        font-size: 1rem;
+    }
+}
